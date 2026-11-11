@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="眠豆腐 × TYC LEAGUE 年度穩定先生粉絲投票：9 位候選人，聽聽隊友怎麼說，再投下你的一票。">
+<meta property="og:title" content="眠豆腐年度穩定先生 MR. STABLE 2026">
+<meta property="og:description" content="9 位候選人，聽聽隊友怎麼說，再投下你的一票。">
+<meta property="og:type" content="website">
+<style>
+:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;font:14px system-ui,sans-serif}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<title>眠豆腐年度穩定先生</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: poster-style front page (MR. STABLE masthead → 3×3 portrait wall → how to vote);
+   each player opens as a two-page spread that turns like a page: left = poster, right = teammates' Q&A + vote CTA */
+:root{
+  --paper:#FFFFFF;
+  --ink:#0B0D10;
+  --ink-2:#2E3640;
+  --muted:#6B7783;
+  --steel:#7FA9D4;      /* the light blue used for names on the TYC Mr. Stable posts */
+  --steel-ink:#3D6C9C;  /* same hue, dark enough for small text */
+  --mist:#EEF4FA;
+  --line:#D9E4EF;
+  --shade:rgba(11,13,16,.55);
+  --display:"Anton","Noto Sans TC",Impact,"Arial Narrow",sans-serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C1015; --ink:#F1F4F7; --ink-2:#C9D2DB; --muted:#8B98A6;
+    --steel:#8DB6E0; --steel-ink:#A9C9EA; --mist:#151C24; --line:#26323F; --shade:rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C1015; --ink:#F1F4F7; --ink-2:#C9D2DB; --muted:#8B98A6;
+  --steel:#8DB6E0; --steel-ink:#A9C9EA; --mist:#151C24; --line:#26323F; --shade:rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--paper)}
+body{color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--steel);outline-offset:3px}
+
+/* ---------- masthead ---------- */
+.mast{padding-block:28px 12px}
+.mast .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.mast .top .presented{font-size:12px;color:var(--muted)}
+.mast .top .presented b{color:var(--ink);font-weight:700}
+.mast .zh{font-weight:900;font-size:clamp(26px,6.4vw,44px);letter-spacing:.14em;margin-top:28px}
+.mast .mr{font-family:var(--display);font-size:clamp(76px,22vw,184px);line-height:.88;letter-spacing:-.005em;margin-top:6px}
+.mast .yr{display:flex;align-items:baseline;gap:14px;margin-top:10px}
+.mast .yr span{font-family:var(--display);font-size:18px;letter-spacing:.2em}
+.mast .yr i{flex:1;height:2px;background:var(--steel);display:block}
+.thesis{display:grid;gap:18px;padding-block:22px 8px;max-width:640px}
+.thesis h2{font-size:clamp(22px,5.4vw,30px);font-weight:900}
+.thesis h2 em{font-style:normal;color:var(--steel-ink)}
+.thesis p{color:var(--ink-2)}
+
+/* ---------- wall ---------- */
+.wall-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding-block:34px 14px}
+.wall-head h3{font-size:20px;font-weight:900}
+.wall-head p{font-size:12px;color:var(--muted)}
+.wall{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (min-width:760px){.wall{gap:18px}}
+.tile{all:unset;cursor:pointer;display:grid;gap:8px;min-width:0}
+.tile .ph{position:relative;aspect-ratio:4/5;max-width:100%;overflow:hidden;background:var(--mist);border-radius:4px}
+.tile img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .35s ease,transform .5s ease}
+.tile .no{position:absolute;left:8px;top:6px;font-family:var(--display);font-size:clamp(20px,5vw,30px);color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.tile .nm{font-weight:900;font-size:clamp(14px,3.6vw,18px);line-height:1.2}
+.tile .co{font-size:11px;color:var(--steel-ink);font-weight:700;line-height:1.3}
+.tile:hover img,.tile:focus-visible img{filter:none;transform:scale(1.03)}
+.tile:focus-visible .ph{outline:2px solid var(--steel);outline-offset:2px}
+
+/* ---------- dimensions & vote steps ---------- */
+.sect{padding-block:44px 0}
+.sect h3{font-size:20px;font-weight:900;margin-bottom:14px}
+.dims{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+@media (min-width:760px){.dims{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.dims div{background:var(--paper);padding:14px;display:grid;gap:4px;min-width:0}
+.dims b{font-size:16px}
+.dims span{font-size:13px;color:var(--ink-2);line-height:1.55}
+.dims small{font-family:var(--display);color:var(--steel);font-size:20px;line-height:1}
+.steps{display:grid;gap:10px;counter-reset:s}
+@media (min-width:760px){.steps{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.steps li{list-style:none;counter-increment:s;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:14px 16px;background:var(--mist);border-radius:6px;min-width:0}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:28px;line-height:1;color:var(--steel-ink)}
+.steps b{display:block;font-size:15px}
+.steps span{font-size:13px;color:var(--ink-2)}
+.steps ol{margin:0;padding:0}
+.when{margin-top:12px;font-size:13px;color:var(--muted)}
+.foot{padding-block:48px 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);margin-top:48px}
+
+/* ---------- spread (player view) ---------- */
+.viewer{position:fixed;inset:0;z-index:50;background:var(--paper);display:flex;flex-direction:column}
+.viewer[hidden]{display:none!important}
+.vbar{display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding-top:calc(10px + env(safe-area-inset-top,0px));padding-bottom:10px;
+  padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));
+  border-bottom:1px solid var(--line);background:var(--paper)}
+.ibtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;min-width:38px;padding:0 12px;border-radius:19px;border:1px solid var(--line);font-size:13px;font-weight:700;color:var(--ink)}
+.ibtn:hover{background:var(--mist)}
+.ibtn:focus-visible{outline:2px solid var(--steel);outline-offset:2px}
+.vbar .pg{font-family:var(--display);font-size:15px;letter-spacing:.12em;color:var(--muted)}
+.stage{flex:1;min-height:0;perspective:1800px;overflow:hidden;position:relative}
+.spread{position:absolute;inset:0;display:grid;grid-template-columns:1fr;overflow-y:auto;-webkit-overflow-scrolling:touch;transform-origin:left center;backface-visibility:hidden;background:var(--paper)}
+@media (min-width:900px){
+  .spread{grid-template-columns:minmax(0,1fr) minmax(0,1fr);overflow:hidden}
+  .spread .left,.spread .right{overflow-y:auto}
+  .spread .left{border-right:1px solid var(--line)}
+}
+.spread.turn-next{animation:turnNext .7s cubic-bezier(.2,.7,.2,1) both}
+.spread.turn-prev{animation:turnPrev .7s cubic-bezier(.2,.7,.2,1) both;transform-origin:right center}
+.spread.turn-next::after,.spread.turn-prev::after{content:"";position:absolute;inset:0;pointer-events:none;animation:shade .7s ease both}
+.spread.turn-next::after{background:linear-gradient(90deg,var(--shade),transparent 60%)}
+.spread.turn-prev::after{background:linear-gradient(270deg,var(--shade),transparent 60%)}
+@keyframes turnNext{from{transform:rotateY(-88deg)}to{transform:rotateY(0)}}
+@keyframes turnPrev{from{transform:rotateY(88deg)}to{transform:rotateY(0)}}
+@keyframes shade{from{opacity:1}to{opacity:0}}
+@media (prefers-reduced-motion:reduce){
+  .spread.turn-next,.spread.turn-prev{animation:fade .2s ease both}
+  .spread.turn-next::after,.spread.turn-prev::after{display:none}
+  @keyframes fade{from{opacity:.3}to{opacity:1}}
+  .tile img{transition:none}
+}
+
+/* left page = poster */
+.left{grid-auto-rows:max-content;padding-block:22px 26px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px;align-content:start}
+@media (min-width:900px){.left{padding:36px 40px}}
+.left .tag{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.left .tag .mr2{font-family:var(--display);font-size:22px;letter-spacing:.02em}
+.left .big{position:relative;border-radius:4px;overflow:hidden;background:var(--mist);aspect-ratio:704/348;max-width:100%}
+@media (min-width:900px){.left .big{aspect-ratio:3/2}}
+.left .big img{width:100%;height:100%;object-fit:cover}
+.left .who{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:end}
+.left .num{font-family:var(--display);font-size:clamp(64px,17vw,104px);line-height:.82;color:var(--steel);grid-row:span 2}
+.left .name{font-size:clamp(30px,8vw,44px);font-weight:900;line-height:1.05}
+.left .name small{display:block;font-size:13px;font-weight:700;color:var(--steel-ink);letter-spacing:.04em;margin-bottom:6px}
+.left .title{font-size:15px;font-weight:700;color:var(--ink-2)}
+.chip{display:inline-flex;align-items:center;height:26px;padding:0 10px;border-radius:13px;background:var(--mist);color:var(--steel-ink);font-size:12px;font-weight:700;width:max-content}
+.left blockquote{margin:6px 0 0;font-size:clamp(18px,4.8vw,22px);font-weight:900;line-height:1.5;border-left:3px solid var(--steel);padding-left:14px}
+
+/* right page = teammates */
+.right{grid-auto-rows:max-content;padding-block:26px 30px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:26px;align-content:start;background:var(--paper)}
+@media (min-width:900px){.right{padding:36px 40px}}
+.right h4{margin:0 0 10px;font-size:13px;letter-spacing:.14em;color:var(--muted);font-weight:700}
+.story{display:grid;gap:14px}
+.story div b{display:block;font-size:16px;margin-bottom:2px}
+.story div p{color:var(--ink-2);font-size:14.5px}
+.qa{display:grid;gap:0;border-top:1px solid var(--line)}
+.qa .item{padding-block:14px;border-bottom:1px solid var(--line);display:grid;gap:6px}
+.qa .q{display:flex;gap:10px;font-weight:700;font-size:14.5px}
+.qa .q span{font-family:var(--display);color:var(--steel);font-size:16px;line-height:1.5;min-width:22px}
+.qa .a{color:var(--ink-2);font-size:14.5px;padding-left:32px}
+.qa .a cite{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:4px}
+.qa .a.todo{color:var(--muted);font-size:13px}
+.hl{margin:0;padding:20px 20px 18px;background:var(--mist);border-radius:8px;display:grid;gap:10px}
+.hl blockquote{margin:0;font-size:clamp(18px,4.6vw,21px);font-weight:900;line-height:1.6;color:var(--ink)}
+.hl figcaption{font-size:13px;font-weight:700;color:var(--steel-ink)}
+.cta{border:1.5px solid var(--ink);border-radius:8px;padding:18px;display:grid;gap:12px}
+.cta h5{margin:0;font-size:20px;font-weight:900}
+.cta .code{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--mist);border-radius:6px;padding:10px 12px;flex-wrap:wrap}
+.cta .code b{font-size:17px;font-weight:900;user-select:all}
+.cta ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--ink-2)}
+.go{all:unset;cursor:pointer;display:flex;align-items:center;justify-content:center;height:48px;border-radius:24px;background:var(--ink);color:var(--paper);font-weight:900;font-size:16px;letter-spacing:.04em}
+.go:focus-visible{outline:2px solid var(--steel);outline-offset:3px}
+.cta .fine{font-size:12px;color:var(--muted)}
+.vnav{display:flex;justify-content:space-between;gap:10px;
+  padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));
+  padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px));
+  border-top:1px solid var(--line);background:var(--paper)}
+.steps{padding:0;margin:0}
+.steps.two{grid-template-columns:1fr}
+@media (min-width:760px){.steps.two{grid-template-columns:1fr 2fr}}
+.ex{display:block;font-style:normal;font-size:13px;color:var(--steel-ink);font-weight:700;margin-top:6px}
+.links{display:grid;gap:10px;margin-top:12px}
+@media (min-width:600px){.links{grid-template-columns:1fr 1fr}}
+.go.alt{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink);box-sizing:border-box}
+.vsteps{margin:0;padding-left:20px;font-size:14px;color:var(--ink-2);display:grid;gap:6px}
+.cta .ex{margin-top:0;font-size:14px}
+.cta .links{margin-top:0}
+.brand{display:grid;gap:16px;align-items:center;padding:22px;border-radius:8px;background:var(--steel);color:#0B0D10}
+.brand h3{margin:4px 0 8px;font-size:22px}
+.brand p{color:#0B0D10;font-size:14px}
+.brand .eyebrow{color:#0B0D10;opacity:.7}
+.brand .go{background:#0B0D10;color:#FFFFFF;padding:0 22px}
+@media (min-width:760px){.brand{grid-template-columns:1fr auto}}
+.mast .top .presented a{color:inherit;text-decoration:none;border-bottom:1px solid var(--steel)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:18px;font-size:13px;z-index:60}
+</style>
+</head>
+<body>
+
+
+<header class="mast wrap">
+  <div class="top">
+    <span class="eyebrow">TYC LEAGUE · 2026 SEASON</span>
+    <span class="presented">presented by <a href="https://www.sleepytofu.com/sleepytofu" target="_blank" rel="noopener"><b>眠豆腐 Sleepy Tofu</b></a></span>
+  </div>
+  <div class="zh">眠豆腐年度穩定先生</div>
+  <h1 class="mr">MR. STABLE</h1>
+  <div class="yr"><span>2026</span><i></i></div>
+</header>
+
+<section class="wrap thesis">
+  <h2>穩定，是<em>最強的實力</em></h2>
+  <p>有人總是發揮亮眼，每場表現都在水準之上；有人上場時間不多，但態度從不打折；有人默默組織著全隊大小事；有人在場上奔馳多年，絲毫不減熱愛。</p>
+  <p>我們打電話給 9 位候選人的隊友，問他們：隊上最放心、最不能沒有的人，到底是什麼樣子？點開每一位，聽聽隊友怎麼說，再投下你的一票。</p>
+</section>
+
+<section class="wrap">
+  <div class="wall-head">
+    <h3>9 位候選人</h3>
+    <p>點選頭像，翻開他的故事</p>
+  </div>
+  <div class="wall" id="wall"></div>
+</section>
+
+<section class="wrap sect">
+  <h3>四大評選維度</h3>
+  <div class="dims">
+    <div><small>01</small><b>場上表現</b><span>每場表現都在水準之上</span></div>
+    <div><small>02</small><b>團隊參與</b><span>上場時間不多，但態度從不打折</span></div>
+    <div><small>03</small><b>球隊角色</b><span>默默組織著全隊大小事物</span></div>
+    <div><small>04</small><b>年紀精神</b><span>奔馳多年，絲毫不減熱愛</span></div>
+  </div>
+</section>
+
+<section class="wrap sect">
+  <h3>怎麼投票</h3>
+  <ol class="steps two">
+    <li><div><b>追蹤</b><span>@sleepytofu_tw 與 @tyc.league</span></div></li>
+    <li><div><b>留言</b><span>到 IG 或 Threads 投票貼文下方留言，Tag 一位朋友，並用「候選人名＋以『穩』造句」的格式留言，才算投票成功</span><em class="ex">例：林俊吉，有阿吉在，場上就是穩</em></div></li>
+  </ol>
+  <div class="links"><a class="go" href="https://www.instagram.com/tyc.league/" id="igLink" target="_blank" rel="noopener">前往 TYC Instagram</a><a class="go alt" href="https://www.threads.com/@tyc.league" id="thLink" target="_blank" rel="noopener">前往 TYC Threads</a></div>
+  <p class="when">投票期間 11/2–11/22｜一個帳號一票｜11/28 全國總決賽現場揭曉，投給得主的有效留言可參加眠豆腐好禮抽獎</p>
+</section>
+
+<section class="wrap sect">
+  <div class="brand">
+    <div>
+      <p class="eyebrow">presented by 眠豆腐 Sleepy Tofu</p>
+      <h3>睡得穩，才打得穩</h3>
+      <p>眠豆腐採用深蹲獨立筒設計，每一顆彈簧都能隨著壓力獨立運作：受力時向下支撐，釋放時提供回彈。年度穩定先生的得主，將獲得眠豆腐準備的一張最穩定的床。</p>
+    </div>
+    <a class="go" href="https://www.sleepytofu.com/sleepytofu" target="_blank" rel="noopener">認識眠豆腐</a>
+  </div>
+</section>
+
+<footer class="wrap foot">
+  <span>眠豆腐 × TYC LEAGUE｜Till You Can't</span>
+  <span>活動辦法由主辦單位保有最終解釋及調整之權利</span>
+</footer>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-labelledby="pname">
+  <div class="vbar">
+    <button class="ibtn" id="closeBtn" type="button" aria-label="回到 9 位候選人">← 全部候選人</button>
+    <span class="pg" id="pg">01 / 09</span>
+  </div>
+  <div class="stage" id="stage"></div>
+  <div class="vnav">
+    <button class="ibtn" id="prevBtn" type="button">‹ 上一位</button>
+    <button class="ibtn" id="nextBtn" type="button">下一位 ›</button>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   投票貼文網址：上線前換成 IG 投票貼文的連結
+   ============================================================ */
+const VOTE_URL = "https://www.instagram.com/tyc.league/";
+const THREADS_URL = "https://www.threads.com/@tyc.league";
+/* 每位候選人的造句範例（只是示範格式） */
+const EX = {lin_junji:"有阿吉在，場上就是穩",chen_zongyi:"黑哥一護球，大家心就穩",liao_qiren:"球給荏哥，比分就穩",xie_zhichang:"昌哥掌舵二十年，台積電一路都穩",chen_zhaoyu:"小禹在，中信的文化就穩",lin_jianting:"Tim 哥一喊暫停，軍心就穩",lai_hanli:"落後再多，他的三分還是穩",su_yingfeng:"穎峰一到，宜蘭隊就穩",yan_juncheng:"得分卡住時，Peter 最穩"};
+
+/* 隊友訪談：依電訪內容整理，問題相近者統一用 Q 字典裡的文字 */
+const Q = {
+  know:"你們當隊友多久了？怎麼認識的？",
+  hard:"球隊最難的時候，他做了什麼撐住大家？",
+  glad:"哪一個瞬間，讓你覺得「還好有他在」？",
+  miss:"如果下一場他沒來，隊上會少了什麼？",
+  game:"印象最深的一場比賽是？",
+  off:"球場下的他，是什麼樣子？",
+  intro:"用一句話，跟不認識他的人介紹他",
+  say:"有什麼話，一直想跟他說？"
+};
+const QA = {
+  lin_junji:{by:"力積電隊友 建良",
+    hl:"每個搶到籃板的隊友，都會把球交給阿吉，因為他一定能突破防守。球給阿吉，就是安心。",
+    qa:[["know","阿吉加入力積電三年多，在那之前就認識了。他以前在牧德科技，第一年打園區盃單場就拿 20、30 分，能傳、能切、能投，我印象很深。後來是我介紹工作給他，他做事很認真，待人也很客氣。"],
+        ["hard","阿吉很有領袖氣質，高中就是校隊，體保進虎尾科大，對戰術的理解很高。不管園區盃還是外面的盃賽，每次暫停都是阿吉在凝聚大家、指揮大家。他就是場上的大腦，負責給身體各個部位發號施令。"],
+        ["game","去年大師賽對工研院，一路打到延長賽才贏。阿吉自己拿了 20 幾分、幾乎打滿全場，休息時間很少，一邊打一邊還要說明戰術，關鍵時刻再來一記上籃。"],
+        ["miss","今年大師盃對上台積電，我們一度落後 20 幾分，一路追到只差 7 分，那時候每個搶到籃板的人都會把球交給阿吉。後來園區盃阿吉沒能一起打，同樣的陣容再遇到台積電，還是輸了 20 幾分。搶籃板、投三分、推快攻，他幾乎什麼都能做，球給阿吉，就是安心。"],
+        ["off","阿吉很顧家、很孝順，假日會一起騎腳踏車。家裡工作上需要幫忙，他一定到，家庭永遠擺第一。"],
+        ["intro","（笑）貌似夢想家的林俊吉，但他能做的事，比夢想家的阿吉更多。他是力積電的指揮官，也是靈魂。"]]},
+  chen_zongyi:{by:"立錡科技隊友 Eddy",
+    hl:"黑哥總提醒我們用平常心看對手。手感不好的時候，他先用身體跟對手硬碰硬，給我們喘息的空間，也把信心帶回來。",
+    qa:[["know","兩年多，他是公司的大學長。"],
+        ["hard","球隊落後或不順的時候，黑哥都會提醒我用平常心看待對手，打出自己的節奏，對手一定守不住。手感不好時他會跳出來鼓勵大家，再用行動證明，用身體跟對手對抗，給我們喘息的空間，也帶給我們信心。"],
+        ["glad","對手防守很積極的時候，他強壯的身體把球護得很好，我們才不會一直被對手上身體、被打亂節奏。"],
+        ["miss","會少了籃板，控球節奏也會變得太急。更重要的是，信心被擊垮的時候，沒有人出來穩定軍心。"],
+        ["game","他跟我說：「我相信你可以打爆對手，但比賽要打四節，要學會更聰明地打、節省體力，才撐得到最後。」聽完不只被振奮，原本想拚命追分的急躁也緩了下來，節奏沒有亂掉。"],
+        ["off","他總是很照顧大家，隨時提醒該注意、可以進步的地方，把每個人在場上的工作和定位交代得清清楚楚。場下又會揪大家聚餐唱歌，每次都很大方讓我們點。他不只是公司和球場上的大哥，更是人生路上的貴人。"],
+        ["intro","黑哥就是個籃球癡，很會照顧大家，是我的大哥也是好友。為人大方又實在，人脈很廣，非常值得深交。"],
+        ["say","黑哥，謝謝你一直撐著這支球隊。我會繼續認真練，在你退休前，一定給你一個冠軍！"]]},
+  liao_qiren:{by:"瑞昱半導體隊友 Kiddlee",
+    hl:"他話不多，就是用實力說話。從球友變成同事，我發現他對工作跟籃球一樣認真、一樣自律。",
+    qa:[["know","認識啟荏五、六年了。一開始在不同公司，是打球認識的，後來我們部門剛好有職缺，就找他加入，當同事也兩年了，一路繼續一起打球、比賽。隊上大家都叫他「荏哥」。"],
+        ["hard","落後的時候，他會用得分把球隊撐住。不管園區盃還是 TYC，比賽強度再高，他都能維持表現，讓我們一分一分追回來。有他扛著，大家就會覺得還有機會，願意繼續拚。"],
+        ["glad","比賽最緊張的時候，他又投進一顆高難度的球。原本大家都繃得很緊，那一球進了，心裡就踏實很多。"],
+        ["miss","進攻端會少掉一個很重要的威脅。他的三分跟切入都很犀利，少了他，其他人要扛更多進攻，比賽會辛苦很多。"],
+        ["game","兩次對上台積電，他那兩場真的像神一樣，緊張時刻一直出現神仙球，讓我想到 Curry。當下只覺得：「這也能進，太強了吧！」但看他平常訓練就知道付出了多少：自己找教練上一對一，練技術、練體能、做重訓，進公司後還帶大家一起練投籃、做專項重訓。"],
+        ["intro","工作上認真負責，球場上值得信賴，一直對自己很有要求的人。"],
+        ["say","從球友變成同事，我發現你對工作跟籃球的態度一樣認真、一樣自律，這點我很欣賞。謝謝你願意花時間帶大家訓練，你是球隊未來很重要的支柱，我們一起把冠軍拿下來！"]]},
+  xie_zhichang:{by:"台積電 18 年隊友 寶順",
+    hl:"當了 20 年隊長，從召集、報名到球衣尺寸，每場比賽都從頭顧到尾。就算落後，每次暫停他都在叮嚀大家不要放棄。",
+    qa:[["know","進台積電就認識了，到現在 18 年。我們同年紀，相處起來特別融洽。"],
+        ["hard","經營一支球隊不容易，召集、報名、球衣球褲，每場比賽他都從頭顧到尾。昌哥當了 20 年隊長，他的觀念是好好打球、不要把情緒帶給隊友。台積電很多人是校隊出身，昌哥就是穩住大家軍心的那個人。"],
+        ["glad","每一個瞬間。有一次在南科比賽，我們落後，只剩沒幾分鐘，每次暫停、每次死球，昌哥都在叮嚀大家不要放棄，就算落後也要拿出拚勁。"],
+        ["game","剛結束的園區盃 45 歲以上壯年組，我們只有六個人。昌哥包辦大小得分，帶大家拿下冠軍。"],
+        ["intro","一路走來，始終如一。"],
+        ["say","辛苦了，有你真好。"]]},
+  chen_zhaoyu:{by:"CTBC 17 年隊友 兆慶",
+    hl:"他的穩定不只在球場上。從得分主力，到把上場時間讓給年輕人，小禹一直是中信籃球隊穩定的象徵。",
+    qa:[["know","我們當了 17 年隊友。昭禹 2009 年進公司，那時候靠他一己之力，幫中信打進金融盃前四強。隊上都叫他「小禹」。"],
+        ["hard","他鬥志很高、很討厭輸的感覺，第四節一定卯足全力，扛下球隊勝負。腳踝扭到，就綁著腳、吃止痛藥，隔天繼續打，是我們的曼巴精神。"],
+        ["glad","很多時刻。剛認識時他就是得分主力，球給他，就知道他會搞定一切。這幾年他刻意把上場時間分給年輕人，傳承球技。中信早期只有六、七個人在打，是他調整大家的上場時間，才把團隊帶起來。"],
+        ["miss","小禹是建立球隊文化的重要人物。他會把這份精神傳給隊友，讓其他人也願意挺身而出。"],
+        ["game","第一次打 TYC LEAGUE，冠軍賽零秒絕殺，CTBC 第一次拿冠軍。關鍵時刻，就是他一肩扛起。"],
+        ["intro","中信 KOBE。也是熱愛運動、熱愛小孩的爸爸，假日會騎單車、跑步、打籃球，帶著兩個充滿活力的孩子。"],
+        ["say","謝謝小禹扛下中信籃球社社長的責任。不管去哪個盃賽，你都把團隊凝聚得很好，讓球隊充滿兄弟情誼。"]]},
+  lin_jianting:{by:"台達電子隊友 Kuei",
+    hl:"暫停時他跳出來問：「大家還有要拚嗎？」接著馬上給出決策，把比賽拿回來。他就是那個讓團隊無條件相信的人。",
+    qa:[["know","大概三、四年。隊上都叫他「Tim 哥」，開玩笑時會叫他「組織之鬼」。"],
+        ["hard","太多畫面了。Tim 哥有一種特質，會讓團隊無條件相信他的決定。有一場第四節落後很多，大家都沒信心，暫停時他跳出來問：「大家還有要拚嗎？」接著馬上給出決策，把局勢扭轉，最後把比賽拿下。他判讀比賽很快，也很了解隊友，知道什麼狀況該派誰。一直以來累積的信任，讓大家都很服他。"],
+        ["glad","這一季他發現球隊需要他多做一點，除了組織，也開始扛起得分的重任。"],
+        ["off","我們不同部門，但他工作上責任感很重、很認真，有時候 TYC 比賽我們還會擔心他忙到趕不上。工作能力強，球場上下都顧得很好，私下也很好相處。"],
+        ["intro","長得很像范逸臣，我們都叫他「台達范逸臣」。分析和邏輯能力很強，反應很快。"],
+        ["say","比賽結束圍圈檢討時，你會直接點出大家該改進的地方，有時候我們沒能做到。希望 Tim 哥秉持初心，繼續相信台達這個團隊，讓我們跟著你一起進步、一起成長。"]]},
+  lai_hanli:{by:"LCS 隊友 台北小智",
+    hl:"從東吳一起打到現在十年，他從 LBJ 的打法變成三分射手。不變的是，比賽卡住的時候，球交給他就對了。",
+    qa:[["know","東吳大學時期就認識了，到現在當了 10 年隊友。"],
+        ["hard","有一次打系際盃冠軍賽，他扭到腳，休息兩分鐘就回到場上，一個人 carry 全場。還有一次大法盃冠軍賽，第一節就拿了快 20 分，後來抄球時脫臼被送醫院，結果那場的數據還是全場最猛。"],
+        ["miss","會少了穩定的三分和穩定的得分。比賽卡住的時候，他就是得分的最佳選擇。"],
+        ["intro","球場上很果斷，球場下感情豐沛、廣結善緣。"],
+        ["say","以前你是 LBJ 的打法，現在是三分射手的打法。打法可以一直變，球要繼續打下去！"]]},
+  su_yingfeng:{by:"宜蘭同鄉隊友 Edward",
+    hl:"有一次開賽前半小時，他還在回宜蘭的客運上，全隊都快急死了。盃賽少了穎峰，我們真的會恐慌。",
+    qa:[["know","從國中就認識，一路到現在。"],
+        ["hard","穎峰的企圖心和勝負心都很強，很積極、很熱血，會一直鼓舞隊友。"],
+        ["miss","我們大家都是素人出身，有他在場上，球停滯的時候就有人能隨時處理球。盃賽少了穎峰，大家會很恐慌！他是醫生，回宜蘭比賽常常要趕時間，有一次開賽前半小時他還在客運上，隊友都快急死了。"],
+        ["off","基本上都是穎峰主揪報名比賽。他犧牲很多休息時間，自己去健身房加練，也會揪隊友一起練。"],
+        ["intro","很聰明、待人真誠，會毫無保留地分享，對生活也有自己獨特的見解。"],
+        ["say","現在工作很忙，想的事情越來越多、顧慮也變多了。希望你保持初衷，該運動的時候還是要運動。"]]},
+  yan_juncheng:{by:"EVA AIR 隊友 Hugo",
+    hl:"他不是喊話帶氣氛的人，而是用行動證明：球隊得分乾旱的時候，他就是會跳出來的那個人。",
+    qa:[["know","從小一起打球的玩伴。暑假在安森打街頭三對三，駿丞國中就進校隊，高中念松山工農，後來到德霖科大。畢業後我們這群從小到大的球友一起去打假日聯盟，他也教大家基本功和觀念。隊上都叫他 Peter。"],
+        ["hard","他不是會喊話、帶氣氛的人，而是用行動證明。球隊得分乾旱的時候，他就是會跳出來的那個人，靠三分、快攻和自己創造的進攻，改變球隊的風向和氣氛。"],
+        ["miss","會少一個能帶動球隊、能自己創造進攻的人。只要有球局，我一定會找他。"],
+        ["off","他很會觀察人，會在場下跟隊友交流，教大家更有效率地防守和進攻、攻擊對手的弱點。場外請他辦事也很可靠，交給他就安心。"],
+        ["intro","很好相處、很友善，很愛跟人交流。穩、可靠，就是他的代名詞。Peter 就是籃球。"],
+        ["say","最近因為受傷，你可能要暫停熱愛的籃球一段時間。不要因為這次的挫折放棄籃球，希望你變得更強，也希望這份韌性帶到工作和考試上，繼續前進，重新回到高峰。"]]}
+};
+
+const PLAYERS = [
+  {no:"01",id:"lin_junji",name:"林俊吉",nick:"阿吉",co:"力積電",area:"新竹",dim:"球隊角色",title:"場上大腦領導者",pos:"52%",
+   quote:"「別慌！這裡有阿吉在！」",
+   story:[["場上的大腦領導者","是球場上穩定軍心的控球後衛，更是球場下指揮若定的指揮官。提醒隊友、佈置戰術、穩定場上節奏，有阿吉在的場合，就是「穩定」兩字的代名詞。"],["現代版的藤真","力積電週六團練，阿吉也扮演協助訓練的角色。場下，戰術版是他的標準配備；場上，控制節奏是他的拿手好戲。"]]},
+  {no:"02",id:"chen_zongyi",name:"陳宗益",nick:"黑哥",co:"立錡科技",area:"新竹",dim:"團隊參與",title:"沉默且穩定的定心丸",pos:"57%",
+   quote:"每一次奮不顧身的撲球，定義了他的領袖風格",
+   story:[["The Quiet Leader","身為球隊資深的老將，拼命指數不輸年輕人。守護籃板、飛身撲球，總會看到黑哥的身影，以身作則就是他帶領球隊的風格。"],["穩定軍心","球隊內不可或缺的 The Engine，無時無刻都帶給隊友滿滿的能量。再大的問題，團結就能解決。"]]},
+  {no:"03",id:"liao_qiren",name:"廖啟荏",nick:"荏哥",co:"瑞昱半導體",area:"新竹",dim:"場上表現",title:"球隊得分輸出核心",pos:"47%",
+   quote:"球給啟荏，就是球隊穩定求勝的不二法門",
+   story:[["穩定且華麗的得分輸出","得分手段如同萬花筒一樣絢麗。三分線外開火、華麗運球後飛身上籃、身體對抗後 And1 進球，都是他的日常。"],["得分暴徒","擅長引領隊伍的得分氣勢，讓高難度投籃看起來很隨意。稍不留神，就是一波流進攻帶走比賽。"]]},
+  {no:"04",id:"xie_zhichang",name:"謝志昌",nick:"昌哥",co:"台積電",area:"新竹",dim:"年紀精神",title:"大船的掌舵者",pos:"61%",
+   quote:"無論遇上多大的風浪，昌哥總能帶領球隊破浪前行",
+   story:[["The Anchor","身為球隊的資深老大哥，昌哥熟稔每位球員的特性，面對不同戰況，總能調配出最對應的陣容與打法。"],["領袖隊魂","他是球隊文化的火炬傳承者，把一身經驗毫無保留地交給後輩。台積電球隊能長年維持競爭力，昌哥正是背後那根挺立的主桅。"]]},
+  {no:"05",id:"chen_zhaoyu",name:"陳昭禹",nick:"小禹",co:"CTBC",area:"雙北",dim:"年紀精神",title:"一件球衣十八年的青春",pos:"54%",
+   quote:"「穩定」是讓球隊持續向前，也把方向交給下一棒",
+   story:[["文化建立","22 歲加入 CTBC，一待就是十八年，帶隊也超過十年。長年累積的共識與班底，帶領 CTBC 建立起屬於自己的傳統與球隊精神。"],["營造認同感","比起結果，更難得的是每個人願意從工作與生活中挪出時間。當認同感逐漸形成，就會有人主動接住責任，守住球隊的文化。"]]},
+  {no:"06",id:"lin_jianting",name:"林建廷",nick:"Tim 哥",co:"台達電子",area:"雙北",dim:"球隊角色",title:"團隊精神標竿",pos:"55%",
+   quote:"用自己的方式，替大家立下一套可以遵循的標準",
+   story:[["Set the Tone","認真對待場上的每一刻，該卡的位置寸步不讓，該提醒的防守主動出聲。直到換人下場，才看得出他剛才幾乎毫無保留。"],["全然投入的狀態","從踏進場邊的那一刻起，他就切換成比賽模式。帶領不只是告訴隊友怎麼做，而是用自己的方式示範：現在，就該這樣打。"]]},
+  {no:"07",id:"lai_hanli",name:"賴翰立",nick:"",co:"LCS",area:"雙北",dim:"場上表現",title:"逆風中的穩定輸出",pos:"72%",
+   quote:"「穩定」來自於無論局勢，都能找到產出的方式",
+   story:[["輸球，但贏得尊重","LCS 的許多比賽，都是在落後的局面裡一路追趕。即使比分逐漸被拉開，賴翰立依舊能找到自己的得分方式。"],["沒有固定公式","得分方式不侷限於單一手段，而是隨著防守做出選擇。每個回合，都把能拿下的機會轉換成實際產出。"]]},
+  {no:"08",id:"su_yingfeng",name:"蘇穎峰",nick:"",co:"北醫附醫",area:"雙北",dim:"團隊參與",title:"球隊向心支柱",pos:"54%",
+   quote:"核心不一定是最能得分的，凝聚大家的也可以是英雄",
+   story:[["The Connector","對醫療從業人員來說，能穩定騰出時間站上球場，本身就是一道不容易的課題。蘇穎峰努力把這群學長學弟重新聚在一起。"],["以身作則","本季至今保持全勤，場上不吝用肢體語言鼓舞自己與隊友，總是默默把事情做好，大概就是最有重量的一種「穩定」。"]]},
+  {no:"09",id:"yan_juncheng",name:"顏駿丞",nick:"Peter",co:"EVA AIR",area:"雙北",dim:"球隊角色",title:"關鍵時刻的破局核心",pos:"47%",
+   quote:"「穩定」也可以是，當球隊需要時總能站出來的人",
+   story:[["承擔，是他的比賽風格","戰術陷入停滯、進攻找不到出口時，場上需要有人先站出來。對 EVA AIR 而言，那個人經常是顏駿丞。"],["The Go-to Guy","率性瀟灑、節奏難以預測。防守越收緊，反而越能逼出他骨子裡的侵略性。Okay. I got it."]]},
+];
+
+const $ = s => document.querySelector(s);
+$("#igLink").href = VOTE_URL; $("#thLink").href = THREADS_URL;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* wall */
+$("#wall").innerHTML = PLAYERS.map((p,i) => `
+  <button class="tile" type="button" data-i="${i}" aria-label="${p.no} ${esc(p.name)}，${esc(p.co)}">
+    <span class="ph"><img src="img/${p.id}.jpg" alt="" style="object-position:${p.pos} 30%" loading="lazy"><span class="no">${p.no}</span></span>
+    <span class="nm">${esc(p.name)}</span>
+    <span class="co">${esc(p.co)}｜${p.area}</span>
+  </button>`).join("");
+$("#wall").addEventListener("click", e => { const t = e.target.closest(".tile"); if (t) open(+t.dataset.i, "next"); });
+
+/* spread */
+let cur = -1, lastFocus = null;
+function spreadHTML(p){
+  const t = QA[p.id] || {qa:[]};
+  const qa = t.qa.map(([k,a],i) => `<div class="item"><p class="q"><span>Q${i+1}</span>${esc(Q[k])}</p><p class="a">${esc(a)}</p></div>`).join("");
+  return `
+  <section class="left" aria-label="${esc(p.name)}">
+    <div class="tag"><span class="mr2">MR. STABLE 2026</span><span class="eyebrow">PLAYER / ${p.area}</span></div>
+    <div class="big"><img src="img/${p.id}.jpg" alt="${esc(p.name)}比賽照片" style="object-position:${p.pos} 35%"></div>
+    <div class="who">
+      <span class="num">${p.no}</span>
+      <h2 class="name" id="pname"><small>${esc(p.co)}${p.nick ? `｜隊友都叫他${esc(p.nick)}` : ""}</small>${esc(p.name)}</h2>
+      <p class="title">${esc(p.title)}</p>
+    </div>
+    <span class="chip">${esc(p.dim)}</span>
+    <blockquote>${esc(p.quote)}</blockquote>
+  </section>
+  <section class="right">
+    ${t.hl ? `<figure class="hl"><blockquote>「${esc(t.hl)}」</blockquote><figcaption>— ${esc(t.by)}</figcaption></figure>` : ""}
+    <div>
+      <h4>隊友這樣說${t.by ? `｜${esc(t.by)}` : ""}</h4>
+      <div class="qa">${qa}</div>
+    </div>
+    <div>
+      <h4>TYC LEAGUE 觀察</h4>
+      <div class="story">${p.story.map(s => `<div><b>${esc(s[0])}</b><p>${esc(s[1])}</p></div>`).join("")}</div>
+    </div>
+    <div class="cta">
+      <h5>幫${esc(p.name)}投一票</h5>
+      <ol class="vsteps"><li>追蹤 @sleepytofu_tw 與 @tyc.league</li><li>到 IG 或 Threads 投票貼文下方留言，Tag 一位朋友，並用「${esc(p.name)}＋以『穩』造句」的格式留言，才算投票成功</li></ol>
+      <p class="ex">例：${esc(p.name)}，${esc(EX[p.id] || "有他在，場上就是穩")}</p>
+      <div class="links"><a class="go" href="${VOTE_URL}" target="_blank" rel="noopener">前往 TYC Instagram</a><a class="go alt" href="${THREADS_URL}" target="_blank" rel="noopener">前往 TYC Threads</a></div>
+      <p class="fine">投票期間 11/2–11/22，一個帳號一票，重複留言以第一則為準</p>
+    </div>
+  </section>`;
+}
+function render(i, dir){
+  const p = PLAYERS[i]; cur = i;
+  const el = document.createElement("article");
+  el.className = "spread" + (dir ? (dir === "prev" ? " turn-prev" : " turn-next") : "");
+  el.innerHTML = spreadHTML(p);
+  const stage = $("#stage"); stage.innerHTML = ""; stage.appendChild(el);
+  el.addEventListener("animationend", () => el.classList.remove("turn-next","turn-prev"), {once:true});
+  $("#pg").textContent = `${p.no} / ${String(PLAYERS.length).padStart(2,"0")}`;
+  $("#prevBtn").disabled = false; $("#nextBtn").disabled = false;
+  const h = "#p" + p.no; if (location.hash !== h) history.replaceState(null, "", h);
+}
+function open(i, dir){
+  lastFocus = document.activeElement;
+  $("#viewer").hidden = false; document.documentElement.style.overflow = "hidden";
+  render(i, dir); $("#closeBtn").focus({preventScroll:true});
+}
+function close(){
+  $("#viewer").hidden = true; document.documentElement.style.overflow = ""; cur = -1;
+  history.replaceState(null, "", location.pathname + location.search);
+  if (lastFocus) lastFocus.focus({preventScroll:true});
+}
+const step = d => render((cur + d + PLAYERS.length) % PLAYERS.length, d > 0 ? "next" : "prev");
+$("#closeBtn").onclick = close;
+$("#prevBtn").onclick = () => step(-1);
+$("#nextBtn").onclick = () => step(1);
+document.addEventListener("keydown", e => {
+  if ($("#viewer").hidden) return;
+  if (e.key === "Escape") close();
+  if (e.key === "ArrowRight") step(1);
+  if (e.key === "ArrowLeft") step(-1);
+});
+/* swipe */
+let sx = null, sy = null;
+$("#stage").addEventListener("touchstart", e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive:true});
+$("#stage").addEventListener("touchend", e => {
+  if (sx === null) return;
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) step(dx < 0 ? 1 : -1);
+}, {passive:true});
+/* hash: #p01 … #p09 */
+function fromHash(){
+  const m = location.hash.match(/^#p(\d{2})$/);
+  const i = m ? PLAYERS.findIndex(p => p.no === m[1]) : -1;
+  if (i >= 0) { if ($("#viewer").hidden) open(i, "next"); else if (i !== cur) render(i, i > cur ? "next" : "prev"); }
+  else if (!$("#viewer").hidden) close();
+}
+window.addEventListener("hashchange", fromHash);
+fromHash();
+</script>
+
+</body>
+</html>
