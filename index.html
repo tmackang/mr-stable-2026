@@ -192,19 +192,27 @@ button{font:inherit;color:inherit}
 .vsteps{margin:0;padding-left:20px;font-size:14px;color:var(--ink-2);display:grid;gap:6px}
 .cta .ex{margin-top:0;font-size:14px}
 .cta .links{margin-top:0}
-.brand{display:grid;gap:16px;align-items:center;padding:22px;border-radius:8px;background:var(--steel);color:#0B0D10}
-.brand h3{margin:4px 0 8px;font-size:22px}
-.brand p{color:#0B0D10;font-size:14px}
+.brand{display:grid;gap:18px;padding:22px;border-radius:8px;background:var(--steel);color:#0B0D10}
+.brand-head h3{margin:4px 0 8px;font-size:clamp(22px,5.6vw,28px);font-weight:900}
+.brand-head p{color:#0B0D10;font-size:14.5px}
 .brand .eyebrow{color:#0B0D10;opacity:.7}
-.brand .go{background:#0B0D10;color:#FFFFFF;padding:0 22px}
-@media (min-width:760px){.brand{grid-template-columns:1fr auto}}
+.brand-img{margin:0;border-radius:6px;overflow:hidden;aspect-ratio:1400/788;max-width:100%;background:#0B0D10}
+.brand-img img{width:100%;height:100%;object-fit:cover;display:block}
+.feats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(11,13,16,.18);border-radius:6px;overflow:hidden}
+@media (min-width:760px){.feats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.feats li{background:#FFFFFF;padding:12px 14px;display:grid;gap:2px;min-width:0}
+.feats b{font-size:14.5px;color:#0B0D10}
+.feats span{font-size:12.5px;color:#3D4A57;line-height:1.5}
+.prize{display:grid;gap:12px;align-items:center;background:#0B0D10;color:#FFFFFF;border-radius:6px;padding:16px 18px}
+.prize p{font-size:clamp(18px,4.8vw,22px);font-weight:900;line-height:1.4;color:#FFFFFF}
+.prize small{display:block;font-size:12px;letter-spacing:.14em;color:#8DB6E0;font-weight:700;margin-bottom:4px}
+.prize .go{background:#FFFFFF;color:#0B0D10;padding:0 22px}
+@media (min-width:760px){.brand{grid-template-columns:1fr 1fr;align-items:start}.feats,.prize{grid-column:1/-1}.prize{grid-template-columns:1fr auto}}
 .mast .top .presented a{color:inherit;text-decoration:none;border-bottom:1px solid var(--steel)}
 .toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--paper);padding:8px 14px;border-radius:18px;font-size:13px;z-index:60}
 </style>
 </head>
 <body>
-
-
 <header class="mast wrap">
   <div class="top">
     <span class="eyebrow">TYC LEAGUE · 2026 SEASON</span>
@@ -219,6 +227,29 @@ button{font:inherit;color:inherit}
   <h2>穩定，是<em>最強的實力</em></h2>
   <p>有人總是發揮亮眼，每場表現都在水準之上；有人上場時間不多，但態度從不打折；有人默默組織著全隊大小事；有人在場上奔馳多年，絲毫不減熱愛。</p>
   <p>我們打電話給 9 位候選人的隊友，問他們：隊上最放心、最不能沒有的人，到底是什麼樣子？點開每一位，聽聽隊友怎麼說，再投下你的一票。</p>
+</section>
+
+<section class="wrap sect">
+  <div class="brand">
+    <div class="brand-head">
+      <p class="eyebrow">presented by 眠豆腐 Sleepy Tofu</p>
+      <h3>睡得穩，表現才穩</h3>
+      <p>眠豆腐採用深蹲獨立筒設計，每一顆彈簧都能隨著壓力獨立運作：受力時向下支撐，釋放時提供回彈。年度穩定先生的得主，將獲得眠豆腐準備的一張最穩定的床。</p>
+    </div>
+    <figure class="brand-img"><img src="img/sleepytofu_spring.jpg" alt="眠豆腐深蹲獨立筒：蹲低至 18cm，更穩更支撐" loading="lazy"></figure>
+    <ul class="feats">
+      <li><b>蹲低 2cm，下盤更穩</b><span>彈簧高度從 20cm 壓縮到 18cm，減少側傾</span></li>
+      <li><b>中鋼高碳鋼線</b><span>2.4mm 六環半，長纖棉筒袋更硬挺強韌</span></li>
+      <li><b>恆溫恆壓更回彈</b><span>300 度恆溫恆壓烘烤定型</span></li>
+      <li><b>透氣不悶熱</b><span>豆腐導流方格＋100% TENCEL 天絲布料</span></li>
+      <li><b>100 晚試睡</b><span>在家睡 100 晚，不滿意可全額退費</span></li>
+      <li><b>10 年保固</b><span>獨立筒與舒適層都在保固範圍</span></li>
+    </ul>
+    <div class="prize">
+      <p><small>年度穩定先生大獎</small>眠豆腐「一張最穩定的床」，尺寸任選</p>
+      <a class="go" href="https://www.sleepytofu.com/sleepytofu" target="_blank" rel="noopener">認識眠豆腐</a>
+    </div>
+  </div>
 </section>
 
 <section class="wrap">
@@ -246,18 +277,7 @@ button{font:inherit;color:inherit}
     <li><div><b>留言</b><span>到 IG 或 Threads 投票貼文下方留言，Tag 一位朋友，並用「候選人名＋以『穩』造句」的格式留言，才算投票成功</span><em class="ex">例：林俊吉，有阿吉在，場上就是穩</em></div></li>
   </ol>
   <div class="links"><a class="go" href="https://www.instagram.com/tyc.league/" id="igLink" target="_blank" rel="noopener">前往 TYC Instagram</a><a class="go alt" href="https://www.threads.com/@tyc.league" id="thLink" target="_blank" rel="noopener">前往 TYC Threads</a></div>
-  <p class="when">投票期間 11/2–11/22｜一個帳號一票｜11/28 全國總決賽現場揭曉，投給得主的有效留言可參加眠豆腐好禮抽獎</p>
-</section>
-
-<section class="wrap sect">
-  <div class="brand">
-    <div>
-      <p class="eyebrow">presented by 眠豆腐 Sleepy Tofu</p>
-      <h3>睡得穩，才打得穩</h3>
-      <p>眠豆腐採用深蹲獨立筒設計，每一顆彈簧都能隨著壓力獨立運作：受力時向下支撐，釋放時提供回彈。年度穩定先生的得主，將獲得眠豆腐準備的一張最穩定的床。</p>
-    </div>
-    <a class="go" href="https://www.sleepytofu.com/sleepytofu" target="_blank" rel="noopener">認識眠豆腐</a>
-  </div>
+  <p class="when">投票期間 11/12（四）至 11/22（日）23:59｜IG、Threads 每個帳號各限投一票｜11/28 全國總決賽現場揭曉｜有效留言中，IG、Threads 各抽一位幸運粉絲送眠豆腐抱枕</p>
 </section>
 
 <footer class="wrap foot">
@@ -450,7 +470,7 @@ function spreadHTML(p){
       <ol class="vsteps"><li>追蹤 @sleepytofu_tw 與 @tyc.league</li><li>到 IG 或 Threads 投票貼文下方留言，Tag 一位朋友，並用「${esc(p.name)}＋以『穩』造句」的格式留言，才算投票成功</li></ol>
       <p class="ex">例：${esc(p.name)}，${esc(EX[p.id] || "有他在，場上就是穩")}</p>
       <div class="links"><a class="go" href="${VOTE_URL}" target="_blank" rel="noopener">前往 TYC Instagram</a><a class="go alt" href="${THREADS_URL}" target="_blank" rel="noopener">前往 TYC Threads</a></div>
-      <p class="fine">投票期間 11/2–11/22，一個帳號一票，重複留言以第一則為準</p>
+      <p class="fine">投票期間 11/12 至 11/22 23:59｜IG、Threads 每個帳號各限投一票，同平台重複留言以第一則為準</p>
     </div>
   </section>`;
 }
